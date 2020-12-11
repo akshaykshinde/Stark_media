@@ -1,17 +1,15 @@
 import React from 'react';
 import {
-    SafeAreaView,
     StyleSheet,
     ScrollView,
     View,
     Text,
-    StatusBar,
     Image,
     Alert
   } from 'react-native';
 import { connect } from 'react-redux';
 import HeaderHome from '../component/HeaderHome';
-import { Button, Card, Container, Toast, CheckBox } from 'native-base';
+import { Button, Card, Container, CheckBox } from 'native-base';
 import {
     Colors
   } from 'react-native/Libraries/NewAppScreen';
@@ -22,26 +20,6 @@ import { productunchecked } from '../action/Act_ProductUnChecked';
 class HomeScreen extends React.Component {
   constructor(props){
     super(props);
-  }
-
-  addToCart = (element) => {
-    if(this.props.cartdata.length > 0){
-      var flag = this.props.cartdata.find( item => {
-        if(item.id === element.id){
-          return true;
-        }
-      });
-      flag ? Toast.show({
-        text: "Book is Already in your Cart",
-        textStyle: { color: "white", paddingTop: -5 },
-        type: "danger",
-        position: "bottom",
-        duration: 3000,
-        style: { height: 40 }
-      }) : this.props.addcart(element);
-    } else {
-      this.props.addcart(element);
-    }
   }
 
   handleCheckBox = (item) => {
